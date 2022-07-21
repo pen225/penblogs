@@ -1,0 +1,391 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.4
+-- Dumped by pg_dump version 14.4
+
+-- Started on 2022-07-21 17:01:59
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 215 (class 1259 OID 19044)
+-- Name: Categories; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Categories" (
+    id integer NOT NULL,
+    nom character varying(255) NOT NULL,
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public."Categories" OWNER TO postgres;
+
+--
+-- TOC entry 214 (class 1259 OID 19043)
+-- Name: Categories_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Categories_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Categories_id_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3352 (class 0 OID 0)
+-- Dependencies: 214
+-- Name: Categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Categories_id_seq" OWNED BY public."Categories".id;
+
+
+--
+-- TOC entry 217 (class 1259 OID 19051)
+-- Name: Commentaires; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Commentaires" (
+    id integer NOT NULL,
+    message text NOT NULL,
+    "postId" integer,
+    "userId" integer,
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public."Commentaires" OWNER TO postgres;
+
+--
+-- TOC entry 216 (class 1259 OID 19050)
+-- Name: Commentaires_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Commentaires_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Commentaires_id_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3353 (class 0 OID 0)
+-- Dependencies: 216
+-- Name: Commentaires_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Commentaires_id_seq" OWNED BY public."Commentaires".id;
+
+
+--
+-- TOC entry 211 (class 1259 OID 19024)
+-- Name: Posts; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Posts" (
+    id integer NOT NULL,
+    titre character varying(255) NOT NULL,
+    message text NOT NULL,
+    "imageUrl" character varying(255),
+    "categorieId" integer,
+    "userId" integer,
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public."Posts" OWNER TO postgres;
+
+--
+-- TOC entry 210 (class 1259 OID 19023)
+-- Name: Posts_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Posts_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Posts_id_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3354 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: Posts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Posts_id_seq" OWNED BY public."Posts".id;
+
+
+--
+-- TOC entry 209 (class 1259 OID 19018)
+-- Name: SequelizeMeta; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."SequelizeMeta" (
+    name character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public."SequelizeMeta" OWNER TO postgres;
+
+--
+-- TOC entry 213 (class 1259 OID 19033)
+-- Name: Users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Users" (
+    id integer NOT NULL,
+    nom character varying(255) NOT NULL,
+    prenom character varying(255) NOT NULL,
+    email character varying(255) NOT NULL,
+    password character varying(255) NOT NULL,
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public."Users" OWNER TO postgres;
+
+--
+-- TOC entry 212 (class 1259 OID 19032)
+-- Name: Users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Users_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Users_id_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3355 (class 0 OID 0)
+-- Dependencies: 212
+-- Name: Users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Users_id_seq" OWNED BY public."Users".id;
+
+
+--
+-- TOC entry 3185 (class 2604 OID 19047)
+-- Name: Categories id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Categories" ALTER COLUMN id SET DEFAULT nextval('public."Categories_id_seq"'::regclass);
+
+
+--
+-- TOC entry 3186 (class 2604 OID 19054)
+-- Name: Commentaires id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Commentaires" ALTER COLUMN id SET DEFAULT nextval('public."Commentaires_id_seq"'::regclass);
+
+
+--
+-- TOC entry 3183 (class 2604 OID 19027)
+-- Name: Posts id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Posts" ALTER COLUMN id SET DEFAULT nextval('public."Posts_id_seq"'::regclass);
+
+
+--
+-- TOC entry 3184 (class 2604 OID 19036)
+-- Name: Users id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Users" ALTER COLUMN id SET DEFAULT nextval('public."Users_id_seq"'::regclass);
+
+
+--
+-- TOC entry 3344 (class 0 OID 19044)
+-- Dependencies: 215
+-- Data for Name: Categories; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Categories" (id, nom, "createdAt", "updatedAt") FROM stdin;
+\.
+
+
+--
+-- TOC entry 3346 (class 0 OID 19051)
+-- Dependencies: 217
+-- Data for Name: Commentaires; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Commentaires" (id, message, "postId", "userId", "createdAt", "updatedAt") FROM stdin;
+\.
+
+
+--
+-- TOC entry 3340 (class 0 OID 19024)
+-- Dependencies: 211
+-- Data for Name: Posts; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Posts" (id, titre, message, "imageUrl", "categorieId", "userId", "createdAt", "updatedAt") FROM stdin;
+2	Le diable dans la peau d'une Princesse	Mon deuxieme film	images/penimage.png	3	1	2022-07-20 11:21:52.09+00	2022-07-20 23:57:17.494+00
+\.
+
+
+--
+-- TOC entry 3338 (class 0 OID 19018)
+-- Dependencies: 209
+-- Data for Name: SequelizeMeta; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."SequelizeMeta" (name) FROM stdin;
+20220720004357-create-post.js
+20220720005807-create-user.js
+20220720010132-create-categorie.js
+20220720010456-create-commentaire.js
+\.
+
+
+--
+-- TOC entry 3342 (class 0 OID 19033)
+-- Dependencies: 213
+-- Data for Name: Users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Users" (id, nom, prenom, email, password, "createdAt", "updatedAt") FROM stdin;
+1	Essoh	Jean Penuel	penuel225@gmail.com	$2a$10$wUNzgvu4L8YxZNb7TGjX8.1fxne0rDoH8m8Ssf3cIZphxFf0I7kIO	2022-07-21 00:48:27.918+00	2022-07-21 00:48:27.918+00
+2	Essoh	Jean Othniel	oresh225@gmail.com	$2a$10$q18bOUzSZLN8a2acGgLyGuLs9sDtbE2.A7TceeIMNBDeBur53aZ3O	2022-07-21 00:49:06.361+00	2022-07-21 00:49:06.361+00
+3	Essoh	Glazi devenu Jean penuel	mrglaz225@gmail.com	$2a$10$EiNmGvXExmMBlo72yRsG0uQqjXaK58SMCp/AyTWtBLTt3ynlKfqD6	2022-07-21 00:50:06.026+00	2022-07-21 15:36:12.611+00
+\.
+
+
+--
+-- TOC entry 3356 (class 0 OID 0)
+-- Dependencies: 214
+-- Name: Categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Categories_id_seq"', 1, false);
+
+
+--
+-- TOC entry 3357 (class 0 OID 0)
+-- Dependencies: 216
+-- Name: Commentaires_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Commentaires_id_seq"', 1, false);
+
+
+--
+-- TOC entry 3358 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: Posts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Posts_id_seq"', 4, true);
+
+
+--
+-- TOC entry 3359 (class 0 OID 0)
+-- Dependencies: 212
+-- Name: Users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Users_id_seq"', 5, true);
+
+
+--
+-- TOC entry 3196 (class 2606 OID 19049)
+-- Name: Categories Categories_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Categories"
+    ADD CONSTRAINT "Categories_pkey" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3198 (class 2606 OID 19058)
+-- Name: Commentaires Commentaires_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Commentaires"
+    ADD CONSTRAINT "Commentaires_pkey" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3190 (class 2606 OID 19031)
+-- Name: Posts Posts_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Posts"
+    ADD CONSTRAINT "Posts_pkey" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3188 (class 2606 OID 19022)
+-- Name: SequelizeMeta SequelizeMeta_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."SequelizeMeta"
+    ADD CONSTRAINT "SequelizeMeta_pkey" PRIMARY KEY (name);
+
+
+--
+-- TOC entry 3192 (class 2606 OID 19042)
+-- Name: Users Users_email_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Users"
+    ADD CONSTRAINT "Users_email_key" UNIQUE (email);
+
+
+--
+-- TOC entry 3194 (class 2606 OID 19040)
+-- Name: Users Users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Users"
+    ADD CONSTRAINT "Users_pkey" PRIMARY KEY (id);
+
+
+-- Completed on 2022-07-21 17:02:02
+
+--
+-- PostgreSQL database dump complete
+--
+
