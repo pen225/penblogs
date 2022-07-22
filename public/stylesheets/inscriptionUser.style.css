@@ -1,0 +1,72 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    background: url("/images/retrosupply-jLwVAUtLOAQ-unsplash.jpg");
+    background-size:cover;
+}
+.containForm{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 5px;
+}
+.title{
+    border-bottom: 1px solid rgb(214, 214, 214);
+    padding: 25px 20px 20px 20px;
+}
+.title h2{
+    color: #333;
+    font-size: 28px;
+}
+.title p{
+    color: #888;
+}
+form{
+    padding: 20px;
+}
+form div{
+    position: relative;
+    text-align: center;
+}
+form div i{
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    color: #888;
+    background: rgb(214, 214, 214);
+    font-size: 20px;
+    padding-top: 5px;
+    border: 1px solid #999;
+    border-radius: 3px 0px 0px 5px;
+}
+form div input{
+    margin-bottom: 20px;
+    height: 30px;
+    width: 100%;
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding-left: 40px;
+    outline: none;
+}
+
+form div input[type="submit"]{
+    color: #fff;
+    padding-left: 0px;
+    width: 100px;
+    float: left;
+    cursor: pointer;
+    background: #6d9d8d;
+}
+form div input[type="submit"]:hover{
+    color: #fff;
+    padding-left: 0px;
+    width: 100px;
+    float: left;
+    cursor: pointer;
+    background: #477164;
+}

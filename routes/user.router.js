@@ -4,6 +4,7 @@ const { validator, result } = require('../middlware/express-validator.inscriptio
 const router = express.Router();
 
 
+router.get('/add', UserController.insertUserForm);
 router.post('/add', validator, UserController.insertUser);
 router.get('/get', UserController.getAllUsers);
 router.get('/get/:id', UserController.getUser);

@@ -3,6 +3,13 @@ const models = require('../models');
 const {validationResult} = require('express-validator');
 
 class UserController {
+
+    // Get user form
+    static insertUserForm = (req, res) => {
+        res.render('inscriptionUser')
+    }
+
+    // Insert user
     static insertUser = (req, res) => {
         const {nom, prenom, email, password} = req.body;
         
@@ -11,6 +18,7 @@ class UserController {
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }else{
+            // Verifier si l'email exist dans la base de donnee
             models.User.findOne({where: {email:email}}).then((result) => {
             console.log('result', result);
             if (!result) {
@@ -35,9 +43,7 @@ class UserController {
                     message: "Email exist"
                 })
             }
-        }).catch((err) => {
-            
-        });
+        })
         }
         
     }
