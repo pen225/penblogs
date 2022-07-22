@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "jean1235",
-    "database": "blogs",
-    "host": "127.0.0.1",
+    "username": "coxelwuewvofcj",
+    "password": "7feb63c1e5f2ef222d518d7fb74cb08245651a88d977537f42b52aa24de0ded7",
+    "database": "d83uqb3vrmkqem",
+    "host": "ec2-54-228-125-183.eu-west-1.compute.amazonaws.com",
     "dialect": "postgres",
     "ssl":true,
     "dialectOptions": {
