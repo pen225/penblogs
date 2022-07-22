@@ -4,7 +4,14 @@
     "password": "jean1235",
     "database": "blogs",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "ssl":true,
+    "dialectOptions": {
+        "ssl": {
+            "require":true,
+            "rejectUnauthorized": false
+        }
+    }
   },
   "test": {
     "username": "postgres",
@@ -18,6 +25,13 @@
     "password": "jean1235",
     "database": "blogs",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "ssl":true,
+    "dialectOptions": {
+        "ssl": {
+            "require":true,
+            "rejectUnauthorized": false
+        }
+    }
   }
 }

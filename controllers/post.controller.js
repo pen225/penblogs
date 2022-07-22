@@ -1,18 +1,20 @@
+const ModelQuery = require('../database/models.query');
 const models = require('../models');
+
 const PostController = class{
     // Creer un post
     static createPost =(req, res) => {
         const post = {...req.body};
-        models.Post.create(post).then((result) => {
+        try {
+            const addpost = ModelQuery.addPost(post)
             res.status(200).json({
-                message: "Insert post reussie",
-                post: result
+                message: "Insert post reussie"
             })
-        }).catch((err) => {
+        } catch (error) {
             res.status(500).json({
-                err:err
-            })
-        });
+            err:error
+        })
+        }
     }
     // Get all post
     static getAllPost =(req, res) => {

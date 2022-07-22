@@ -5,12 +5,24 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 
+
 const indexRouter = require('./routes/index.router');
 const postRouter = require('./routes/post.router');
 const userRouter = require('./routes/user.router');
 
+// Local database
+const sequelize = require('./database/localDatabase');
+
 
 var app = express();
+
+// Connect localDatabase
+// try {
+//   sequelize.authenticate();
+//   console.log('Connection has been established successfully.');
+// } catch (error) {
+//   console.error('Unable to connect to the database:', error);
+// }
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
