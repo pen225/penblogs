@@ -15,4 +15,13 @@ const sequelize = new Sequelize('blogs', 'postgres', 'jean1235', {
 });
 
 
+// "ssl":true,
+// "dialectOptions": {
+//     "ssl": {
+//         "require":true,
+//         "rejectUnauthorized": false
+//     }
+// }
+
+
 module.exports = sequelize;

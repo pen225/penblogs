@@ -5,34 +5,63 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/inscriptionUser.style.css">
-    <title>Document</title>
+    <title>Inscription</title>
 </head>
 <body>
     <div class="containForm">
         <div class="title">
             <h2>Sign Up</h2>
             <p>Merci de remplir ce formulaire pour créer votre compte!</p>
+            <% if(err_mail){ %>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <span class="message-erreur"><%= err_mail%></span>
+            <%}%>
         </div>
-        <form action="">
+        <form action="" method="post">
+            <% if(err.nom){ %>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <span class="message-erreur"><%= err.nom.msg%></span>
+            <%}%>
             <div>
-                <i class="fa-solid fa-user"></i>
-                <input type="text" name="nom" placeholder="Nom">
+                <label for="nom"><i class="fa-solid fa-user"></i></label>
+                <input type="text" name="nom" placeholder="Nom" id="nom" value="<%= response.nom%>">
             </div>
+            
+
+            <% if(err.prenom){ %>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <span class="message-erreur"><%= err.prenom.msg%></span>
+            <%}%>
             <div>
-                <i class="fa-solid fa-user"></i>
-                <input type="text" name="email" placeholder="Prenom">
+                <label for="prenom"><i class="fa-solid fa-user"></i></label>
+                <input type="text" name="prenom" placeholder="Prenom" id="prenom" value="<%= response.prenom%>">
             </div>
+
+            <% if(err.email){ %>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <span class="message-erreur"><%= err.email.msg%></span>
+            <%}%>
             <div>
-                <i class="fa-solid fa-paper-plane"></i>
-                <input type="email" name="email" placeholder="Email">
+                <label for="email"><i class="fa-solid fa-paper-plane"></i></label>
+                <input type="email" name="email" placeholder="Email" id="email" value="<%= response.email%>">
             </div>
+
+            <% if(err.password){ %>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <span class="message-erreur"><%= err.password.msg%></span>
+            <%}%>
             <div>
-                <i class="fa-solid fa-lock"></i>
-                <input type="password" name="password" placeholder="Password">
+                <label for="password"><i class="fa-solid fa-lock"></i></label>
+                <input type="password" name="password" placeholder="Password" id="password" value="<%= response.password%>">
             </div>
+
+            <% if(err.repeatePassword){ %>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <span class="message-erreur"><%= err.repeatePassword.msg%></span>
+            <%}%>
             <div>
-                <i class="fa-solid fa-unlock-keyhole"></i>
-                <input type="password" name="repeatePassword" placeholder="Repeat password">
+                <label for="repeatePassword"><i class="fa-solid fa-unlock-keyhole"></i></label>
+                <input type="password" name="repeatePassword" placeholder="Repeat password" id="repeatePassword" value="<%= response.repeatePassword%>">
             </div>
             <div>
                 <input type="submit" class="submit" value="Sign Up">
