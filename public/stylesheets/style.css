@@ -1,8 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@1,600&family=Oswald&family=Poppins:ital,wght@0,200;1,600&display=swap');
+
 *{
   margin: 0px;
   padding: 0px;
+  box-sizing: border-box;
 }
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px 'Poppins',"Lucida Grande", Helvetica, Arial, sans-serif;
+}
+header{
+  /* background: url('/images/turntable-g124cbf1c0_1920.jpg') rgba(29, 28, 28, 0.511); */
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), url('/images/turntable-g124cbf1c0_1920.jpg') center/cover no-repeat;
+  width: 100%;
+  height: 100vh;
+}
+.row{
+  width: 70%;
+  margin: 0px auto;
 }
 
+nav{
+  height: 70px;
+  background-color: rgb(29, 28, 28);
+  position: sticky;
+  top: 0px;
+  z-index: 50;
+}
+nav .navbar{
+  display: flex;
+  justify-content: space-between;
+}
+.logo {
+  width: 120px;
+  position: absolute;
+  top: -20px;
+}
+nav .nav{
+  display: flex;
+  /* float: right; */
+  height: 100%;
+  /* margin-right: 150px; */
+  /* margin-right: 5%; */
+  list-style: none;
+}
+nav .nav li{
+  /* background-color: aliceblue; */
+  /* height: 100%; */
+  line-height: 70px;
+  text-align: center;
+}
+nav .nav li a{
+ text-decoration: none;
+ color: #fff;
+ font-size: 17px;
+ height: 100%;
+ width: 100%;
+ display: block;
+ /* padding: 0px 50px; */
+ width: 100px;
+ transition: all .5s ease;
+}
+nav .nav li a:hover{
+ color: #477164;
+ background: #fff;
+ font-weight: bold;
+}
+.header-accroche{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.header-accroche h1{
+  color: #fff;
+  text-shadow: 0px 0px 20px #333;
+  font-family: 'Cabin';
+  font-size: 60px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.header-accroche p{
+  color: #fff;
+  text-shadow: 0px 0px 20px #333;
+  font-size: 20px;
+  font-weight: 400;
+}
+.header-accroche .inscription{
+  display: block;
+  background: #6d9d8d;
+  color: white;
+  font-size: 18px;
+  padding: 8px;
+  width: 200px;
+  margin: 20px auto 0px auto;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.header-accroche .inscription:hover{
+  background: #477164;
+}
+
+
+
+
+
+
+
+
+
+
+
+.content-blog{
+  display: flex;
+}
+.left{
+  width: 65%;
+}
+.postblog img{
+  width: 100%;
+}
+.info-post{
+  padding: 10px;
+}
+.info-post .detail-user{
+  display: flex;
+}
+.info-post .detail-user{
+  display: flex;
+  align-items: center;
+}
+.info-post .detail-user .user-image{
+  height: 35px;
+  width: 35px;
+  background: rgb(214, 214, 214);
+  border-radius: 50px;
+  margin-right: 15px;
+}
+.info-post .detail-user .user-image i{
+  color: #888;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  line-height: 35px;
+}
+.postblog .post-title{
+  font-size: 45px;
+  /* text-align: center; */
+}

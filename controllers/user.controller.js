@@ -53,6 +53,11 @@ class UserController {
         
     }
 
+    // Connect User
+    static connexion =(req, res) => {
+
+    }
+
     // Get all users
     static getAllUsers = (req, res) => {
         models.User.findAll().then((result) => {
